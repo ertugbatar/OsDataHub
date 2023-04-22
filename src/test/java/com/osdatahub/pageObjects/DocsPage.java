@@ -1,46 +1,52 @@
 package com.osdatahub.pageObjects;
 
-import org.openqa.selenium.By;
+import org.example.BaseClass;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-
 // her class a base class i extend yapiyoruz ki base classtaki herseyi kullanabilelim
+
 public class DocsPage extends BaseClass {
 
     public DocsPage() {
         PageFactory.initElements(getDriver(),this);
-
-
     }
 
 
-    // 11 tane side menu elemenleri eklle id sini al
+    //@FindBy is an annotation in Selenium WebDriver that is used to locate a web element on a web page.
+    @FindBy(xpath = "//span[contains(text(),'OS NGD API – Tiles')]")
+    public WebElement ngdTilesApi;
+    @FindBy(xpath = "//span[contains(text(),'OS Downloads API')]")
+    public WebElement downloadsApi;
 
-//    public static List<String> setSideMenu() {
-//        List<WebElement> elements = getDriver().findElements(By.xpath("//li[contains(@id, 'Menu')]"));
-//
-//        List<String> sideMenuItems = new ArrayList<>();
-//        for (WebElement eachElement : elements) {
-//            sideMenuItems.add(eachElement.getText());
-//        }
-//        return sideMenuItems;
-//    }
+    @FindBy(xpath = "//span[contains(text(),'OS NGD API – Features')]")
+    public WebElement featuresApi;
+    @FindBy(xpath = "//span[contains(text(),'OS Linked Identifiers API')]")
+    public WebElement linkedIdentifiersApi;
+    @FindBy(xpath = "//span[contains(text(),'OS Maps API')]")
+    public WebElement mapsApi;
 
 
-    public static List<String> setSideMenu(){
-        List<WebElement> elements = getDriver().findElements(By.xpath("//li[contains(@id, 'Menu')]"));
+    @FindBy(xpath = "//span[contains(text(),'OS Match & Cleanse API')]")
+    public WebElement matchApi;
+    @FindBy(xpath = "//span[contains(text(),'OS Names API')]")
+    public WebElement namesApi;
+    @FindBy(xpath = "//span[contains(text(),'OS Places API')]")
+    public WebElement placesApi;
+    @FindBy(xpath = "//span[contains(text(),'OS Vector Tile API')]")
+    public WebElement vectorApi;
+    @FindBy(xpath = "//span[contains(text(),'OAuth 2 API')]")
+    public WebElement oauthApi;
 
-        List<String> sideMenuItems = new ArrayList<>();
-        for (WebElement eachElement : elements) {
-            sideMenuItems.add(eachElement.getText());
-        }
+    @FindBy(xpath = "//span[contains(text(),'Overview')]")
+    public WebElement overview;
 
-        return sideMenuItems;
+    @FindBy(xpath = "//span[contains(text(),'Getting started guide')]")
+    public WebElement gettingStarted;
 
-    }
+    @FindBy(xpath = "//span[contains(text(),'Technical specification')]")
+    public WebElement techSpecification;
 
 
 }

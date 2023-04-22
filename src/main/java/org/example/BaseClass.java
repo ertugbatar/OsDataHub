@@ -1,4 +1,4 @@
-package com.osdatahub.pageObjects;
+package org.example;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.cdimascio.dotenv.Dotenv;
@@ -23,8 +23,12 @@ public class BaseClass {
         Dotenv dotenv = Dotenv.configure().ignoreIfMalformed().load();
         browser = dotenv.get("browser");
         url = dotenv.get("url");
+        //This code block takes the values of the browser and url variables
+        // from the .env file and assigns them to the variables for use in the respective classes.
     }
+
     private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+   //ThreadLocal class is used to control the sharing of variables in multithreaded environments by creating a separate instance for each thread.
 
 
     public static WebDriver getDriver() {

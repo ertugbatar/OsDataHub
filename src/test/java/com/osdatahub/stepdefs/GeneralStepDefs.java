@@ -1,18 +1,20 @@
 package com.osdatahub.stepdefs;
 
 import com.osdatahub.implementation.GeneralImpl;
-import com.osdatahub.pageObjects.BaseClass;
-import com.osdatahub.pageObjects.MainPage;
+import org.example.BaseClass;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
 public class GeneralStepDefs extends BaseClass {
-    MainPage mainPage =new MainPage();
     GeneralImpl general = new GeneralImpl();
 
+    //step definitions that match the Gherkin steps,
+    //and executing the code associated with those steps
     @When("user open main page on browser")
     public void openMainPage() {
         getDriver().get(url);
+        getDriver().manage().window().maximize();
         general.clickByName("acceptCookies");
     }
 
@@ -26,4 +28,10 @@ public class GeneralStepDefs extends BaseClass {
         general.clickByName(page);
         general.verifyMenu(menu);
     }
+
+    @Given("the user calls API {string} and verifies {string} as {string}")
+    public void verifyResponse(String endpoint, String verify, String expectedResult) {
+        general.verifyResponse(general.callAPI(endpoint), verify,expectedResult);
+    }
 }
+
